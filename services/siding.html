@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vinyl Siding Installation & Repair | Apex Windows & Exteriors Grimsby</title>
+    <meta name="description"
+        content="Premium vinyl siding installation and repair in Grimsby, Hamilton, and St. Catharines. Durable, low-maintenance, available in many colors. FREE estimates." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+        .service-hero {
+            padding: 160px 5% 80px;
+            background: linear-gradient(rgba(10, 22, 40, 0.8), rgba(10, 22, 40, 0.95)), url("../assets/siding.png") no-repeat center center / cover;
+            text-align: center;
+        }
+
+        .service-content {
+            padding: 100px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .service-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- FLOATING PHONE -->
+    <a href="tel:+1YOURNUMBER" class="float-phone" aria-label="Call us">📞</a>
+
+    <!-- NAV -->
+    <nav>
+        <a href="../index.html" class="nav-logo">
+            <img src="../assets/logo.png" alt="Apex Windows & Exteriors" />
+            <span class="nav-badge">Grimsby</span>
+        </a>
+        <ul class="nav-links" style="display: flex;">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#services">Services</a></li>
+            <li><a href="../index.html#price-match">Price Match</a></li>
+            <li><a href="../index.html#contact" class="nav-cta">Free Estimate</a></li>
+        </ul>
+    </nav>
+
+    <header class="service-hero">
+        <div class="section-tag" style="justify-content: center;">Exterior Protection</div>
+        <h1 class="section-title" style="font-size: clamp(3rem, 7vw, 5rem);">VINYL SIDING & <span>REPAIR</span></h1>
+        <p class="hero-sub" style="margin: 0 auto 40px;">Professional siding installation across Grimsby, Hamilton,
+            Burlington & Brantford.</p>
+        <a href="tel:+1YOURNUMBER" class="btn-primary">📞 Get a FREE Estimate</a>
+    </header>
+
+    <section class="service-content reveal">
+        <div>
+            <h2 class="section-title">TRANSFORM YOUR <span>HOME'S CURB APPEAL</span></h2>
+            <p class="section-sub" style="color: var(--white); font-weight: 500; margin-bottom: 20px;">
+                Protect your home from Ontario's harsh weather with premium vinyl siding from Apex Windows & Exteriors.
+            </p>
+            <p class="section-sub">
+                We install and repair all siding types — vinyl, aluminum, and more. Our vinyl siding is low-maintenance,
+                durable, and available in dozens of colours.
+            </p>
+            <p class="section-sub" style="margin-top: 20px;">
+                FREE estimates available across Grimsby, Hamilton, Burlington, St. Catharines, and Brantford.
+            </p>
+            <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="why-feat" style="padding: 15px;">
+                    <div class="why-feat-title">✨ From $199</div>
+                    <p class="why-feat-desc">Siding Repair</p>
+                </div>
+                <div class="why-feat" style="padding: 15px;">
+                    <div class="why-feat-title">🛡️ Built Durable</div>
+                    <p class="why-feat-desc">UV & Storm Resistant</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img src="../assets/siding.png" alt="Siding Installation"
+                style="width: 100%; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+        </div>
+    </section>
+
+    <!-- PRICE MATCH -->
+    <section class="pricematch reveal">
+        <div class="pm-box">
+            <h2 class="pm-title">WE BEAT ANY <span>SIDING QUOTE</span></h2>
+            <p class="pm-desc">Show us any competitor's written estimate for vinyl siding and we will beat it.
+                Guaranteed.</p>
+            <a href="tel:+1YOURNUMBER" class="btn-primary" style="margin: 0 auto; display: inline-flex">📞 Call Last —
+                Save Money</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 Apex Windows & Exteriors. All rights reserved. Grimsby, ON.</p>
+        </div>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+    </script>
+</body>
+
+</html>
