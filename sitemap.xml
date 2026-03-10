@@ -26,22 +26,50 @@
   </url>
   <url>
     <loc>https://apexwindows.ca/grimsby.html</loc>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://apexwindows.ca/hamilton.html</loc>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://apexwindows.ca/burlington.html</loc>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://apexwindows.ca/brantford.html</loc>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://apexwindows.ca/niagara.html</loc>
-    <priority>0.7</priority>
+    <loc>https://apexwindows.ca/st-catharines.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/niagara-falls.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/beamsville.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/stoney-creek.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/ancaster.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/paris.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/caledonia.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/binbrook.html</loc>
+    <priority>0.8</priority>
   </url>
 </urlset>

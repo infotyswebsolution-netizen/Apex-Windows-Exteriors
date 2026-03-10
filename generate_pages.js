@@ -1,0 +1,237 @@
+const fs = require('fs');
+
+const cities = [
+  { id: 'grimsby', name: 'Grimsby', focus: 'Window Replacement & Exterior Services' },
+  { id: 'brantford', name: 'Brantford', focus: 'Siding, Windows & Eavestrough Repair' },
+  { id: 'hamilton', name: 'Hamilton', focus: 'Window Installation, Eavestrough & Siding' },
+  { id: 'burlington', name: 'Burlington', focus: 'Premium Window Contractors & Exterior Doors' },
+  { id: 'st-catharines', name: 'St. Catharines', focus: 'Vinyl Siding, Windows & Doors' },
+  { id: 'niagara-falls', name: 'Niagara Falls', focus: 'Exterior Contractors, Windows & Eavestrough' },
+  { id: 'beamsville', name: 'Beamsville', focus: 'Window Replacement & Siding Contractors' },
+  { id: 'stoney-creek', name: 'Stoney Creek', focus: 'Eavestrough Cleaning, Siding & Windows' },
+  { id: 'ancaster', name: 'Ancaster', focus: 'High-End Window Installation & Exterior Doors' },
+  { id: 'paris', name: 'Paris', focus: 'Siding Companies & Window Contractors' },
+  { id: 'caledonia', name: 'Caledonia', focus: 'Exterior Home Services, Windows & Doors' },
+  { id: 'binbrook', name: 'Binbrook', focus: 'Eavestrough Repair, Siding & Window Replacement' }
+];
+
+const template = (city) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${city.name} ON ${city.focus} | Apex</title>
+    <meta name="description" content="Top-rated exterior contractor in ${city.name}. We specialize in window installation, entry doors, eavestrough cleaning, gutter guards, and premium vinyl siding. FREE local estimates!">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .service-block { padding: 80px 5%; border-bottom: 1px solid var(--border-light); }
+        .service-block:nth-child(even) { background-color: var(--bg-white); }
+        .service-block:nth-child(odd) { background-color: var(--bg-light); }
+        .hero-local { background: linear-gradient(rgba(27, 46, 75, 0.85), rgba(27, 46, 75, 0.95)), url('assets/hero_house.png') center/cover; padding: 120px 5%; color: white; text-align: center; }
+        .faq-box { background: white; border: 1px solid var(--border-light); padding: 30px; border-radius: 8px; margin-bottom: 20px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- FLOATING PHONE -->
+    <a href="tel:9051234567" class="floating-phone" aria-label="Call Now">📞</a>
+
+    <!-- TOP BAR & NAV -->
+    <div class="top-bar">
+        📞 Serving Grimsby, Hamilton & Niagara | FREE Estimates | <span>We Beat Any Quote</span>
+    </div>
+    
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="assets/logo.png" alt="Apex Windows & Exteriors Logo" style="height:45px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="areas.html" style="color:var(--red);">Areas</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <style>@media (min-width: 901px) { .nav-btn { display: inline-flex !important; } }</style>
+        <a href="contact.html" class="btn-primary nav-btn" style="display: none;">GET FREE QUOTE</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero-local">
+        <div class="container">
+            <h1 style="max-width:900px; margin: 0 auto 20px; font-size: clamp(2.5rem, 5vw, 4rem); color: white;">${city.name}'s Premier Window, Door & Exterior Contractor</h1>
+            <p style="font-size:1.3rem; max-width: 800px; margin: 0 auto; line-height: 1.6; color: #E2E8F0;">
+                Local experts providing high-quality window replacement, vinyl siding, eavestrough cleaning, and exterior doors right here in ${city.name}, ON. We beat any written quote guaranteed!
+            </p>
+            <br><br>
+            <a href="contact.html" class="btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">Get a FREE ${city.name} Estimate</a>
+        </div>
+    </div>
+
+    <!-- MAIN LOCAL SEO CONTENT -->
+    <section class="service-block">
+        <div class="container two-col">
+            <div>
+                <img src="assets/modern_house.png" alt="Window replacement and exterior services in ${city.name}" loading="lazy" style="border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%;">
+            </div>
+            <div>
+                <span class="section-label">TRUSTED IN ${city.name.toUpperCase()}</span>
+                <h2>Comprehensive Home Exterior Makeovers in ${city.name}</h2>
+                <p style="color:var(--text-grey); margin-bottom: 20px; line-height: 1.7;">
+                    Homeowners in <strong>${city.name}, ON</strong> face unique weather challenges, from intense sun to harsh winter storms. Apex Windows & Exteriors is dedicated to protecting your property with the highest standard of exterior renovations. Whether you are dealing with drafty windows, cracked siding, or clogged eavestroughs causing water damage, our local team provides fast, reliable, and affordable solutions.
+                </p>
+                <p style="color:var(--text-grey); margin-bottom: 25px; line-height: 1.7;">
+                    As a deeply rooted local business, we don't just work in ${city.name}; we treat every home like our own. We use only premium-grade materials engineered for Canadian climates, ensuring your investment lasts for decades. Plus, our absolute <strong>price match guarantee</strong> means you get the best quality without overpaying.
+                </p>
+                <ul class="check-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Same-day FREE in-home consultations in ${city.name}</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Lifetime warranties on select windows and siding products</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Fully licensed, $2M Liability Insured, and WSIB covered</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEEP DIVE SERVICES -->
+    <section class="service-block text-center">
+        <div class="container">
+            <span class="section-label">OUR EXPERTISE</span>
+            <h2 style="margin-bottom: 50px;">Dedicated Services for ${city.name} Residents</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; text-align: left;">
+                <!-- WINDOWS -->
+                <div style="background:var(--bg-white); padding:40px; border-radius:8px; border:1px solid var(--border-light); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                    <h3 style="color:var(--navy); font-size:1.5rem; margin-bottom: 15px;">🪟 Window Installation</h3>
+                    <p style="color:var(--text-grey); line-height:1.6; margin-bottom: 20px;">
+                        Upgrade your home's energy efficiency with custom <strong>window replacement in ${city.name}</strong>. We install high-performance casement, awning, double-hung, and picture windows featuring Low-E argon gas glass. Stop drafts and reduce your hydro bills permanently.
+                    </p>
+                    <a href="services.html#windows" style="color:var(--red); font-weight:bold; text-decoration:none;">Learn More →</a>
+                </div>
+                
+                <!-- SIDING -->
+                <div style="background:var(--bg-white); padding:40px; border-radius:8px; border:1px solid var(--border-light); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                    <h3 style="color:var(--navy); font-size:1.5rem; margin-bottom: 15px;">🏠 Vinyl Siding</h3>
+                    <p style="color:var(--text-grey); line-height:1.6; margin-bottom: 20px;">
+                        Transform your curb appeal with our top-rated <strong>vinyl siding contractors in ${city.name}</strong>. We offer dozens of modern profiles, board & batten, and traditional laps that resist fading, cracking, and peeling. We also provide fast siding repair for storm damage.
+                    </p>
+                    <a href="services.html#vinyl-siding" style="color:var(--red); font-weight:bold; text-decoration:none;">Learn More →</a>
+                </div>
+
+                <!-- GUTTERS -->
+                <div style="background:var(--bg-white); padding:40px; border-radius:8px; border:1px solid var(--border-light); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                    <h3 style="color:var(--navy); font-size:1.5rem; margin-bottom: 15px;">🌧️ Eavestrough & Guards</h3>
+                    <p style="color:var(--text-grey); line-height:1.6; margin-bottom: 20px;">
+                        Protect your foundation. We provide thorough <strong>eavestrough cleaning in ${city.name}</strong>, seamless aluminum trough replacement, and lifetime gutter guard installations so you never have to climb a ladder to clean leaves again.
+                    </p>
+                    <a href="services.html#eavestrough" style="color:var(--red); font-weight:bold; text-decoration:none;">Learn More →</a>
+                </div>
+
+                <!-- DOORS -->
+                <div style="background:var(--bg-white); padding:40px; border-radius:8px; border:1px solid var(--border-light); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                    <h3 style="color:var(--navy); font-size:1.5rem; margin-bottom: 15px;">🚪 Entry & Patio Doors</h3>
+                    <p style="color:var(--text-grey); line-height:1.6; margin-bottom: 20px;">
+                        Secure your home with premium fibreglass and steel entry doors, or open up your living space with energy-efficient sliding glass patio doors. We provide precision <strong>door installation across ${city.name}</strong> with deadbolt alignment and high-quality weatherstripping.
+                    </p>
+                    <a href="services.html#doors" style="color:var(--red); font-weight:bold; text-decoration:none;">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION FOR SEO -->
+    <section class="service-block text-center">
+        <div class="container">
+            <h2 style="margin-bottom: 40px;">Frequently Asked Questions in ${city.name}</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-box">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--navy);">Do you provide free estimates in ${city.name}?</h3>
+                    <p style="color:var(--text-grey);">Yes! We provide 100% free, no-obligation in-home estimates for all residents in ${city.name} and the surrounding areas. We assess your home, measure exactly what is needed, and provide a clear, upfront written quote.</p>
+                </div>
+                <div class="faq-box">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--navy);">How does your Price Match Guarantee work?</h3>
+                    <p style="color:var(--text-grey);">If you receive a written quote from another licensed and insured contractor in the ${city.name} area for the same product and scope of work, simply show it to us and we will beat their price.</p>
+                </div>
+                <div class="faq-box">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--navy);">How long does a typical window or siding installation take?</h3>
+                    <p style="color:var(--text-grey);">Most window installations in a standard ${city.name} home can be completed in 1 to 2 days. Siding projects typically take 3 to 5 days depending on the size of the house and weather conditions. We always prioritize speed without sacrificing quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="bg-navy text-center" style="padding: 100px 5%;">
+        <div class="container">
+            <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); color: white;">Ready for a FREE Estimate?</h2>
+            <p style="font-size: 1.15rem; color: #A0ABC0; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Call or text us today. We're fast, fair, and always on budget.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="tel:9051234567" class="btn-primary" style="background-color: var(--bg-white); color: var(--red) !important; font-size: 1.1rem; padding: 15px 35px;">📞 Call 905-123-4567</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" style="display:inline-block; margin-bottom: 20px;">
+                    <h2 style="font-family:'Oswald', sans-serif; letter-spacing:1px; margin:0; line-height:1;">
+                        APEX<br><span style="color:var(--red);">WINDOWS & EXTERIORS</span></h2>
+                </a>
+                <p style="color:#A0ABC0; font-size:0.9rem; line-height:1.7;">
+                    Grimsby's most trusted exterior contractor. Licensed, insured, and dedicated to working within your
+                    budget.
+                </p>
+                <p style="margin-top: 15px; font-weight: bold; color: var(--gold);">📞 905-123-4567</p>
+            </div>
+            <div>
+                <div class="footer-h">Services</div>
+                <ul class="footer-links">
+                    <li><a href="services.html#windows">Window Installation</a></li>
+                    <li><a href="services.html#doors">Door Replacement</a></li>
+                    <li><a href="services.html#eavestrough">Eavestrough Cleaning</a></li>
+                    <li><a href="services.html#gutter-guards">Gutter Guards</a></li>
+                    <li><a href="services.html#vinyl-siding">Vinyl Siding</a></li>
+                    <li><a href="services.html#siding-repair">Siding Repair</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-h">Top Areas</div>
+                <ul class="footer-links">
+                    <li><a href="grimsby.html">Grimsby</a></li>
+                    <li><a href="hamilton.html">Hamilton</a></li>
+                    <li><a href="burlington.html">Burlington</a></li>
+                    <li><a href="brantford.html">Brantford</a></li>
+                    <li><a href="st-catharines.html">St. Catharines</a></li>
+                    <li><a href="areas.html">View All Areas</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-h">Company</div>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">All Services</a></li>
+                    <li><a href="contact.html">Contact & Estimates</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p style="color:#A0ABC0; font-size: 0.85rem;">© 2026 Apex Windows & Exteriors. All rights reserved. Ontario, Canada. | Licence & Insurance Fully Maintained.</p>
+            <div class="footer-seo">
+                Window installation Grimsby | Eavestrough cleaning Hamilton | Gutter guard installation Grimsby | Vinyl
+                siding contractor Hamilton | Door installation Burlington | Siding repair Niagara | Windows and doors
+                Grimsby ON | Eavestrough repair near me | Exterior contractor Grimsby Ontario | Price match windows
+                Hamilton
+            </div>
+        </div>
+    </footer>
+</body>
+</html>`;
+
+cities.forEach(city => {
+    fs.writeFileSync(city.id + '.html', template(city));
+});
+console.log('Generated ' + cities.length + ' deep SEO pages successfully.');
