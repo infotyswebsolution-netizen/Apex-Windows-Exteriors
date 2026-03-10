@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deck Building & Fence Installation Grimsby | Apex Exteriors</title>
+    <meta name="description"
+        content="Custom deck building and fence installation in Grimsby, Hamilton, and Burlington. Pressure-treated wood, cedar, and composite options. FREE estimates." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+        .service-hero {
+            padding: 160px 5% 80px;
+            background: linear-gradient(rgba(10, 22, 40, 0.8), rgba(10, 22, 40, 0.95)), url("../assets/modern_house.png") no-repeat center center / cover;
+            text-align: center;
+        }
+
+        .service-content {
+            padding: 100px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .service-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- FLOATING PHONE -->
+    <a href="tel:+1YOURNUMBER" class="float-phone" aria-label="Call us">📞</a>
+
+    <!-- NAV -->
+    <nav>
+        <a href="../index.html" class="nav-logo">
+            <img src="../assets/logo.png" alt="Apex Windows & Exteriors" />
+            <span class="nav-badge">Grimsby</span>
+        </a>
+        <ul class="nav-links" style="display: flex;">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#services">Services</a></li>
+            <li><a href="../index.html#price-match">Price Match</a></li>
+            <li><a href="../index.html#contact" class="nav-cta">Free Estimate</a></li>
+        </ul>
+    </nav>
+
+    <header class="service-hero">
+        <div class="container">
+            <div style="margin-bottom: 20px; font-size: 0.9rem; color: #A0ABC0;">
+                <a href="../index.html" style="color: white;">Home</a> / <a href="../services.html"
+                    style="color: white;">Services</a> / Decks & Fences
+            </div>
+            <div class="section-tag" style="justify-content: center;">Outdoor Living</div>
+            <h1 class="section-title" style="font-size: clamp(3rem, 7vw, 5rem);">DECKS <span>& FENCES</span></h1>
+            <p class="hero-sub" style="margin: 0 auto 40px;">Custom deck building and quality fence installation in
+                Grimsby, Hamilton, and Burlington.</p>
+            <a href="tel:+1YOURNUMBER" class="btn-primary">📞 Get a FREE Estimate</a>
+        </div>
+    </header>
+
+    <section class="service-content reveal">
+        <div>
+            <h2 class="section-title">EXPAND YOUR <span>OUTDOOR SPACE</span></h2>
+            <p class="section-sub" style="color: var(--white); font-weight: 500; margin-bottom: 20px;">
+                Enhance your backyard with a custom-built deck or a high-quality privacy fence.
+            </p>
+            <p class="section-sub">
+                Apex Windows & Exteriors builds beautiful, durable outdoor structures using premium materials. Whether
+                you want a low-maintenance composite deck or a classic cedar privacy fence, our team delivers expert
+                craftsmanship and long-lasting results.
+            </p>
+            <p class="section-sub" style="margin-top: 20px;">
+                We handle the entire process from design to completion. Serving Grimsby, Hamilton, Burlington, and the
+                Niagara region.
+            </p>
+            <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="why-feat" style="padding: 15px;">
+                    <div class="why-feat-title">📐 Custom Design</div>
+                    <p class="why-feat-desc">Tailored to Your Yard</p>
+                </div>
+                <div class="why-feat" style="padding: 15px;">
+                    <div class="why-feat-title">🪵 Quality Wood</div>
+                    <p class="why-feat-desc">Cedar & Treated Options</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img src="../assets/modern_house.png" alt="Deck Building and Fencing"
+                style="width: 100%; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+        </div>
+    </section>
+
+    <!-- PRICE MATCH -->
+    <section class="pricematch reveal">
+        <div class="pm-box">
+            <h2 class="pm-title">WE BEAT ANY <span>DECK OR FENCE QUOTE</span></h2>
+            <p class="pm-desc">Show us any competitor's written estimate for deck or fence installation and we will beat
+                it.
+                Guaranteed.</p>
+            <a href="tel:+1YOURNUMBER" class="btn-primary" style="margin: 0 auto; display: inline-flex">📞 Call Last —
+                Save Money</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 Apex Windows & Exteriors. All rights reserved. Grimsby, ON.</p>
+        </div>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+    </script>
+</body>
+
+</html>
