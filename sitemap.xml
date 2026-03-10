@@ -88,4 +88,28 @@
     <loc>https://apexwindows.ca/blog-siding-guide.html</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://apexwindows.ca/services/windows.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/services/doors.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/services/eavestrough.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/services/siding.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/services/soffit-fascia.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://apexwindows.ca/services/decks-fences.html</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
