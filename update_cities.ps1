@@ -26,13 +26,13 @@ foreach ($city in $cities) {
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                 <a href="blog-window-signs.html" style="text-decoration:none; color:inherit; display:block; background:var(--bg-light); border-radius:12px; overflow:hidden;">
-                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop" alt="Window inspection" style="width:100%; height:180px; object-fit:cover;">
+                    <img src="assets/window_inspection.png" alt="Window inspection" style="width:100%; height:180px; object-fit:cover;">
                     <div style="padding:20px;">
                         <h3 style="margin:0; font-size:1.1rem;">5 Signs You Need New Windows</h3>
                     </div>
                 </a>
                 <a href="blog-gutter-safety.html" style="text-decoration:none; color:inherit; display:block; background:var(--bg-light); border-radius:12px; overflow:hidden;">
-                    <img src="https://images.unsplash.com/photo-1635424710928-0544e8512eae?q=80&w=2071&auto=format&fit=crop" alt="Clogged gutters" style="width:100%; height:180px; object-fit:cover;">
+                    <img src="assets/clogged_gutters.png" alt="Clogged gutters" style="width:100%; height:180px; object-fit:cover;">
                     <div style="padding:20px;">
                         <h3 style="margin:0; font-size:1.1rem;">Gutters vs. Your Foundation</h3>
                     </div>
