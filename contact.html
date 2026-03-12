@@ -9,219 +9,265 @@
         content="Contact Grimsby's #1 exterior contractor for a FREE estimate on windows, doors, eavestroughs, and siding. Serve Grimsby, Hamilton, Burlington, Brantford & Niagara.">
     <link rel="stylesheet" href="style.css">
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-P7DMPTLP');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-P7DMPTLP');</script>
     <!-- End Google Tag Manager -->
 </head>
 
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7DMPTLP"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7DMPTLP" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-    <!-- FLOATING PHONE -->
-    <a href="tel:6478334262" class="floating-phone" aria-label="Call Now">📞</a>
+<!-- FLOATING PHONE -->
+<a href="tel:6478334262" class="floating-phone" aria-label="Call Now">📞</a>
 
-    <!-- SECTION 1 - TOP BAR & NAV -->
-    <div class="top-bar">
-        📞 Serving Grimsby, Hamilton & Niagara | FREE Estimates | <span>We Beat Any Quote</span>
+<!-- SECTION 1 - TOP BAR & NAV -->
+<div class="top-bar">
+    📞 Serving Grimsby, Hamilton & Niagara | FREE Estimates | <span>We Beat Any Quote</span>
+</div>
+
+<nav>
+    <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Apex Windows & Exteriors Logo" style="height:45px;">
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="areas.html">Areas</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" style="color:var(--red);">Contact</a></li>
+    </ul>
+    <!-- Quick fix for desktop nav button -->
+    <style>
+        @media (min-width: 901px) {
+            .nav-btn {
+                display: inline-flex !important;
+            }
+        }
+    </style>
+    <a href="contact.html" class="btn-primary nav-btn" style="display: none;">GET FREE QUOTE</a>
+</nav>
+
+<section>
+    <div class="container text-center mb-40">
+        <h1>Get Your FREE Estimate Today</h1>
+        <p style="color:var(--text-grey); font-size:1.15rem;">We respond within 1 hour. No obligation. We'll beat
+            any written quote.</p>
     </div>
 
-    <nav>
-        <a href="index.html" class="nav-logo">
-            <img src="assets/logo.png" alt="Apex Windows & Exteriors Logo" style="height:45px;">
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="areas.html">Areas</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html" style="color:var(--red);">Contact</a></li>
-        </ul>
-        <!-- Quick fix for desktop nav button -->
-        <style>
-            @media (min-width: 901px) {
-                .nav-btn {
-                    display: inline-flex !important;
+    <div class="container two-col" style="align-items: stretch;">
+        <!-- FORM -->
+        <div class="contact-form">
+            <form id="contactForm" action="https://formspree.io/f/mkoqodvv" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="E.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="(647) 833-4262"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="john@example.com"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City / Area</label>
+                    <input type="text" name="city" id="city" class="form-control" placeholder="E.g. Grimsby, ON"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select name="service" id="service" class="form-control" required
+                        style="background-color: var(--bg-white);">
+                        <option value="" disabled selected>Select a service...</option>
+                        <option value="Windows">Windows Installation/Replacement</option>
+                        <option value="Doors">Door Installation</option>
+                        <option value="Eavestrough">Eavestrough Cleaning/Repair</option>
+                        <option value="Gutter Guards">Gutter Guards</option>
+                        <option value="Siding">Vinyl Siding</option>
+                        <option value="Other">Other / General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message / Description</label>
+                    <textarea name="message" id="message" class="form-control" rows="4"
+                        placeholder="How can we help you?" required></textarea>
+                </div>
+                <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%;">SUBMIT — GET FREE
+                    ESTIMATE</button>
+                <div id="formResponse"
+                    style="margin-top:20px; padding:15px; border-radius:8px; display:none; text-align:center; font-weight:600;">
+                </div>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const form = e.target;
+                const btn = document.getElementById('submitBtn');
+                const responseDiv = document.getElementById('formResponse');
+
+                const formData = new FormData(form);
+                btn.disabled = true;
+                btn.innerText = 'SENDING...';
+                responseDiv.style.display = 'none';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        responseDiv.style.display = 'block';
+                        responseDiv.style.backgroundColor = '#d4edda';
+                        responseDiv.style.color = '#155724';
+                        responseDiv.innerText = 'Thank you! Your message has been sent. We will contact you shortly.';
+                        form.reset();
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    responseDiv.style.display = 'block';
+                    responseDiv.style.backgroundColor = '#f8d7da';
+                    responseDiv.style.color = '#721c24';
+                    responseDiv.innerText = 'Oops! There was a problem. Please try again or call us directly.';
+                } finally {
+                    btn.disabled = false;
+                    btn.innerText = 'SUBMIT — GET FREE ESTIMATE';
                 }
-            }
-        </style>
-        <a href="contact.html" class="btn-primary nav-btn" style="display: none;">GET FREE QUOTE</a>
-    </nav>
+            });
+        </script>
 
-    <section>
-        <div class="container text-center mb-40">
-            <h1>Get Your FREE Estimate Today</h1>
-            <p style="color:var(--text-grey); font-size:1.15rem;">We respond within 1 hour. No obligation. We'll beat
-                any written quote.</p>
-        </div>
+        <!-- CONTACT INFO -->
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+            <div class="contact-info-box">
+                <h3>Contact Information</h3>
 
-        <div class="container two-col" style="align-items: stretch;">
-            <!-- FORM -->
-            <div class="contact-form">
-                <form action="https://formspree.io/f/mkoqodvv" method="POST">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="E.g. John Doe"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" name="phone" id="phone" class="form-control" placeholder="(647) 833-4262"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="john@example.com"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City / Area</label>
-                        <input type="text" name="city" id="city" class="form-control" placeholder="E.g. Grimsby, ON"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Needed</label>
-                        <select name="service" id="service" class="form-control" required
-                            style="background-color: var(--bg-white);">
-                            <option value="" disabled selected>Select a service...</option>
-                            <option value="Windows">Windows Installation/Replacement</option>
-                            <option value="Doors">Door Installation</option>
-                            <option value="Eavestrough">Eavestrough Cleaning/Repair</option>
-                            <option value="Gutter Guards">Gutter Guards</option>
-                            <option value="Siding">Vinyl Siding</option>
-                            <option value="Other">Other / General Inquiry</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message / Description</label>
-                        <textarea name="message" id="message" class="form-control" rows="4"
-                            placeholder="How can we help you?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%;">SUBMIT — GET FREE ESTIMATE</button>
-                </form>
-            </div>
-
-            <!-- CONTACT INFO -->
-            <div style="display: flex; flex-direction: column; gap: 30px;">
-                <div class="contact-info-box">
-                    <h3>Contact Information</h3>
-
-                    <div class="contact-info-item">
-                        <div style="font-size:1.5rem;">📞</div>
-                        <div>
-                            <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Phone Number</div>
-                            <a href="tel:6478334262"
-                                style="color:var(--bg-light); text-decoration: underline;">647-833-4262</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div style="font-size:1.5rem;">📧</div>
-                        <div>
-                            <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Email</div>
-                            <a href="mailto:apexwindowsexteriors@gmail.com"
-                                style="color:var(--bg-light); text-decoration: underline;">apexwindowsexteriors@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div style="font-size:1.5rem;">📍</div>
-                        <div>
-                            <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Serving</div>
-                            <div style="color:var(--bg-light);">Grimsby, Hamilton, Burlington, Brantford & Niagara</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div style="font-size:1.5rem;">⏰</div>
-                        <div>
-                            <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Hours</div>
-                            <div style="color:var(--bg-light);">Mon–Sat 7am–7pm <br> Sunday: By Appointment</div>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
-                        <div class="trust-badges-row" style="color: white; justify-content: flex-start;">
-                            <span>✅ Licensed</span>
-                            <span>✅ Insured</span>
-                            <span>✅ Free Estimates</span>
-                            <span>✅ Price Match</span>
-                        </div>
+                <div class="contact-info-item">
+                    <div style="font-size:1.5rem;">📞</div>
+                    <div>
+                        <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Phone Number</div>
+                        <a href="tel:6478334262"
+                            style="color:var(--bg-light); text-decoration: underline;">647-833-4262</a>
                     </div>
                 </div>
 
-                <div
-                    style="flex:1; border-radius: 8px; overflow: hidden; min-height: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                    <iframe style="width: 100%; height: 100%; border:0;" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen=""
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.135438004517!2d-79.57115180937693!3d43.19693954000749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882ca5b89cb72d79%3A0x6788fbd2419782cd!2swindows%20%26%20doors%20props!5e1!3m2!1sen!2sca!4v1773105896243!5m2!1sen!2sca"></iframe>
+                <div class="contact-info-item">
+                    <div style="font-size:1.5rem;">📧</div>
+                    <div>
+                        <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Email</div>
+                        <a href="mailto:apexwindowsexteriors@gmail.com"
+                            style="color:var(--bg-light); text-decoration: underline;">apexwindowsexteriors@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div style="font-size:1.5rem;">📍</div>
+                    <div>
+                        <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Serving</div>
+                        <div style="color:var(--bg-light);">Grimsby, Hamilton, Burlington, Brantford & Niagara</div>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div style="font-size:1.5rem;">⏰</div>
+                    <div>
+                        <div style="font-weight:700; font-family:'Montserrat', sans-serif;">Hours</div>
+                        <div style="color:var(--bg-light);">Mon–Sat 7am–7pm <br> Sunday: By Appointment</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+                    <div class="trust-badges-row" style="color: white; justify-content: flex-start;">
+                        <span>✅ Licensed</span>
+                        <span>✅ Insured</span>
+                        <span>✅ Free Estimates</span>
+                        <span>✅ Price Match</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <a href="index.html" style="display:inline-block; margin-bottom: 20px;">
-                    <h2 style="font-family:'Oswald', sans-serif; letter-spacing:1px; margin:0; line-height:1;">
-                        APEX<br><span style="color:var(--red);">WINDOWS & EXTERIORS</span></h2>
-                </a>
-                <p style="color:#A0ABC0; font-size:0.9rem; line-height:1.7;">
-                    Grimsby's most trusted exterior contractor. Licensed, insured, and dedicated to working within your
-                    budget.
-                </p>
-                <p style="margin-top: 15px; font-weight: bold; color: var(--gold);">📞 647-833-4262</p>
-            </div>
-            <div>
-                <div class="footer-h">Services</div>
-                <ul class="footer-links">
-                    <li><a href="services.html#windows">Window Installation</a></li>
-                    <li><a href="services.html#doors">Door Replacement</a></li>
-                    <li><a href="services.html#eavestrough">Eavestrough Cleaning</a></li>
-                    <li><a href="services.html#gutter-guards">Gutter Guards</a></li>
-                    <li><a href="services.html#vinyl-siding">Vinyl Siding</a></li>
-                    <li><a href="services.html#siding-repair">Siding Repair</a></li>
-                </ul>
-            </div>
-            <div>
-                <div class="footer-h">Areas</div>
-                <ul class="footer-links">
-                    <li><a href="areas.html">Grimsby</a></li>
-                    <li><a href="areas.html">Hamilton</a></li>
-                    <li><a href="areas.html">Burlington</a></li>
-                    <li><a href="areas.html">Brantford</a></li>
-                    <li><a href="areas.html">Niagara Region</a></li>
-                </ul>
-            </div>
-            <div>
-                <div class="footer-h">Company</div>
-                <ul class="footer-links">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">All Services</a></li>
-                    <li><a href="contact.html">Contact & Estimates</a></li>
-                </ul>
+            <div
+                style="flex:1; border-radius: 8px; overflow: hidden; min-height: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <iframe style="width: 100%; height: 100%; border:0;" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen=""
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.135438004517!2d-79.57115180937693!3d43.19693954000749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882ca5b89cb72d79%3A0x6788fbd2419782cd!2swindows%20%26%20doors%20props!5e1!3m2!1sen!2sca!4v1773105896243!5m2!1sen!2sca"></iframe>
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="footer-bottom">
-            <p style="color:#A0ABC0; font-size: 0.85rem;">© 2026 Apex Windows & Exteriors. All rights reserved. Ontario,
-                Canada. | Licence & Insurance Fully Maintained.</p>
-            <div class="footer-seo">
-                Window installation Grimsby | Eavestrough cleaning Hamilton | Gutter guard installation Grimsby | Vinyl
-                siding contractor Hamilton | Door installation Burlington | Siding repair Niagara | Windows and doors
-                Grimsby ON | Eavestrough repair near me | Exterior contractor Grimsby Ontario | Price match windows
-                Hamilton
-            </div>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <a href="index.html" style="display:inline-block; margin-bottom: 20px;">
+                <h2 style="font-family:'Oswald', sans-serif; letter-spacing:1px; margin:0; line-height:1;">
+                    APEX<br><span style="color:var(--red);">WINDOWS & EXTERIORS</span></h2>
+            </a>
+            <p style="color:#A0ABC0; font-size:0.9rem; line-height:1.7;">
+                Grimsby's most trusted exterior contractor. Licensed, insured, and dedicated to working within your
+                budget.
+            </p>
+            <p style="margin-top: 15px; font-weight: bold; color: var(--gold);">📞 647-833-4262</p>
         </div>
-    </footer>
+        <div>
+            <div class="footer-h">Services</div>
+            <ul class="footer-links">
+                <li><a href="services.html#windows">Window Installation</a></li>
+                <li><a href="services.html#doors">Door Replacement</a></li>
+                <li><a href="services.html#eavestrough">Eavestrough Cleaning</a></li>
+                <li><a href="services.html#gutter-guards">Gutter Guards</a></li>
+                <li><a href="services.html#vinyl-siding">Vinyl Siding</a></li>
+                <li><a href="services.html#siding-repair">Siding Repair</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-h">Areas</div>
+            <ul class="footer-links">
+                <li><a href="areas.html">Grimsby</a></li>
+                <li><a href="areas.html">Hamilton</a></li>
+                <li><a href="areas.html">Burlington</a></li>
+                <li><a href="areas.html">Brantford</a></li>
+                <li><a href="areas.html">Niagara Region</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-h">Company</div>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">All Services</a></li>
+                <li><a href="contact.html">Contact & Estimates</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p style="color:#A0ABC0; font-size: 0.85rem;">© 2026 Apex Windows & Exteriors. All rights reserved. Ontario,
+            Canada. | Licence & Insurance Fully Maintained.</p>
+        <div class="footer-seo">
+            Window installation Grimsby | Eavestrough cleaning Hamilton | Gutter guard installation Grimsby | Vinyl
+            siding contractor Hamilton | Door installation Burlington | Siding repair Niagara | Windows and doors
+            Grimsby ON | Eavestrough repair near me | Exterior contractor Grimsby Ontario | Price match windows
+            Hamilton
+        </div>
+    </div>
+</footer>
 
 </body>
 
