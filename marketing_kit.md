@@ -59,7 +59,7 @@ Don't overpay for home repairs. Call Apex Windows & Exteriors first!
 
 1.  **Google Business Profile**: Verify in Grimsby (DONE ✅).
 2.  **Ontario Business Registry**: Register 'Apex Windows & Exteriors'.
-3.  **Domain**: Purchase `apexwindows.ca` or similar.
+3.  **Domain**: Purchase `www.apexwindowsexteriors.com` or similar.
 4.  **Email**: Create `apexwindows.grimsby@gmail.com`.
 5.  **Advertising**: Post the Kijiji ad above.
 6.  **Insurance**: Get General Liability Insurance.

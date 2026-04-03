@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 Crawl-delay: 10
 
-Sitemap: https://apex-windows-exteriors.vercel.app/sitemap-vercel.xml
-Sitemap: https://apexwindows.ca/sitemap.xml
+Sitemap: https://www.apexwindowsexteriors.com/sitemap-vercel.xml
+Sitemap: https://www.apexwindowsexteriors.com/sitemap.xml

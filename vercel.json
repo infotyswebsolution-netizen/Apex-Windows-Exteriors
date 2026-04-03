@@ -1,0 +1,26 @@
+{
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "apex-windows-exteriors.vercel.app"
+                }
+            ],
+            "destination": "https://www.apexwindowsexteriors.com/$1",
+            "permanent": true
+        },
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "apexwindowsexteriors.com"
+                }
+            ],
+            "destination": "https://www.apexwindowsexteriors.com/$1",
+            "permanent": true
+        }
+    ]
+}
