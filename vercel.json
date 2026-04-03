@@ -1,5 +1,152 @@
 {
+    "cleanUrls": true,
+    "trailingSlash": true,
     "redirects": [
+        {
+            "source": "/grimsby.html",
+            "destination": "/areas/grimsby/",
+            "permanent": true
+        },
+        {
+            "source": "/hamilton.html",
+            "destination": "/areas/hamilton/",
+            "permanent": true
+        },
+        {
+            "source": "/brantford.html",
+            "destination": "/areas/brantford/",
+            "permanent": true
+        },
+        {
+            "source": "/burlington.html",
+            "destination": "/areas/burlington/",
+            "permanent": true
+        },
+        {
+            "source": "/niagara.html",
+            "destination": "/areas/niagara/",
+            "permanent": true
+        },
+        {
+            "source": "/niagara-falls.html",
+            "destination": "/areas/niagara-falls/",
+            "permanent": true
+        },
+        {
+            "source": "/st-catharines.html",
+            "destination": "/areas/st-catharines/",
+            "permanent": true
+        },
+        {
+            "source": "/beamsville.html",
+            "destination": "/areas/beamsville/",
+            "permanent": true
+        },
+        {
+            "source": "/stoney-creek.html",
+            "destination": "/areas/stoney-creek/",
+            "permanent": true
+        },
+        {
+            "source": "/ancaster.html",
+            "destination": "/areas/ancaster/",
+            "permanent": true
+        },
+        {
+            "source": "/binbrook.html",
+            "destination": "/areas/binbrook/",
+            "permanent": true
+        },
+        {
+            "source": "/caledonia.html",
+            "destination": "/areas/caledonia/",
+            "permanent": true
+        },
+        {
+            "source": "/paris.html",
+            "destination": "/areas/paris/",
+            "permanent": true
+        },
+        {
+            "source": "/services.html",
+            "destination": "/services/",
+            "permanent": true
+        },
+        {
+            "source": "/services/windows.html",
+            "destination": "/services/window-installation/",
+            "permanent": true
+        },
+        {
+            "source": "/services/doors.html",
+            "destination": "/services/exterior-doors/",
+            "permanent": true
+        },
+        {
+            "source": "/services/eavestrough.html",
+            "destination": "/services/eavestroughs/",
+            "permanent": true
+        },
+        {
+            "source": "/services/siding.html",
+            "destination": "/services/vinyl-siding/",
+            "permanent": true
+        },
+        {
+            "source": "/blog.html",
+            "destination": "/blog/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-simcoe-siding.html",
+            "destination": "/blog/simcoe-siding-guide/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-brantford-windows.html",
+            "destination": "/blog/brantford-windows/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-burford.html",
+            "destination": "/blog/burford/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-energy-guide.html",
+            "destination": "/blog/energy-guide/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-gutter-safety.html",
+            "destination": "/blog/gutter-safety/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-ohsweken.html",
+            "destination": "/blog/ohsweken/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-paris-doors.html",
+            "destination": "/blog/paris-doors/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-port-dover.html",
+            "destination": "/blog/port-dover/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-siding-guide.html",
+            "destination": "/blog/siding-guide/",
+            "permanent": true
+        },
+        {
+            "source": "/blog-window-signs.html",
+            "destination": "/blog/window-signs/",
+            "permanent": true
+        },
         {
             "source": "/(.*)",
             "has": [
