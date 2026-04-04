@@ -1,0 +1,21 @@
+# Required DNS Records for Apex Windows & Exteriors
+
+To complete Priority 5 (Email / Domain Trust) of the SEOptimer audit, the following DNS records must be added to your domain registrar (e.g., Vercel, GoDaddy, or Namecheap).
+
+## 1. SPF Record (Sender Policy Framework)
+Prevents email spoofing by authorizing specific IP addresses/services to send mail from your domain.
+
+- **Type**: TXT
+- **Host**: @ (or leave blank)
+- **Value**: v=spf1 include:_spf.google.com ~all
+*(Assuming you use Google Workspace. If you use a different provider, please let me know for an updated record.)*
+
+## 2. DMARC Record (Domain-based Message Authentication)
+Tells email servers how to handle messages that fail SPF or DKIM checks.
+
+- **Type**: TXT
+- **Host**: _dmarc
+- **Value**: v=DMARC1; p=quarantine; rua=mailto:info@apexwindowsexteriors.com
+
+## 3. DKIM Record (Recommended)
+You should also enable DKIM in your email provider's admin panel (e.g., Google Workspace Admin) and add the resulting TXT record to your DNS to ensure maximum deliverability.

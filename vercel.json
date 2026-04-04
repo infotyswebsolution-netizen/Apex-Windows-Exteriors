@@ -3,6 +3,26 @@
     "trailingSlash": true,
     "redirects": [
         {
+            "source": "/about.html",
+            "destination": "/about/",
+            "permanent": true
+        },
+        {
+            "source": "/contact.html",
+            "destination": "/contact/",
+            "permanent": true
+        },
+        {
+            "source": "/areas.html",
+            "destination": "/areas/",
+            "permanent": true
+        },
+        {
+            "source": "/index.html",
+            "destination": "/",
+            "permanent": true
+        },
+        {
             "source": "/grimsby.html",
             "destination": "/areas/grimsby/",
             "permanent": true

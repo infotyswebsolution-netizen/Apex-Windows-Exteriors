@@ -1,0 +1,29 @@
+# Apex Windows & Exteriors
+
+Apex Windows & Exteriors is a premier exterior home contractor serving Grimsby, Hamilton, Burlington, Brantford, and Southern Ontario. Specializing in window installation, door replacement, vinyl siding, eavestroughs, and gutter guards.
+
+## Core Services
+
+- **Window Installation**: Energy-efficient replacement windows (casement, double-hung, bay, picture).
+- **Exterior Doors**: Custom entry doors and patio sliding doors (steel, fiberglass).
+- **Vinyl Siding**: Premium low-maintenance siding installations and repairs.
+- **Eavestroughs & Gutters**: Professional cleaning, seamless repairs, and heavy-duty gutter guards.
+- **Soffit & Fascia**: Roofline protection and ventilation systems.
+- **Decks & Fences**: Custom-built outdoor living spaces.
+
+## Service Areas
+
+- Grimsby, Hamilton, Burlington, Brantford, St. Catharines, Niagara Region, Ancaster, Stoney Creek, Beamsville, Caledonia, Paris, Binbrook.
+
+## Contact Information
+
+- **Phone**: 647-833-4262
+- **Website**: https://www.apexwindowsexteriors.com
+- **Email**: info@apexwindowsexteriors.com
+
+## Technical SEO Status
+
+- **Clean URLs**: Folder-based structure (/about/, /services/, /contact/).
+- **SSL**: Secured via Vercel.
+- **Performance**: Optimized for mobile LCP with preloaded hero assets and eager loading.
+- **Trust Features**: Licensed & Insured, Lifetime Warranty on products, Price Match Guarantee.
