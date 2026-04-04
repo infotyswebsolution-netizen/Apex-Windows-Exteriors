@@ -24,6 +24,31 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-P7DMPTLP');</script>
     <!-- End Google Tag Manager -->
+
+<style>
+/* Areas Dropdown */
+.nav-dropdown{position:relative;}
+.nav-dropdown>a::after{content:'';display:inline-block;}
+.dropdown-menu{
+  display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  background:#fff;border:1px solid #e2e8f0;border-radius:12px;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);padding:20px;min-width:320px;z-index:1000;
+}
+.nav-dropdown:hover .dropdown-menu{display:block;}
+.dropdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.dropdown-grid a{
+  display:block;padding:10px 16px;color:#1b2e4b;font-size:.92rem;font-weight:600;
+  text-decoration:none;border-radius:8px;transition:background .2s,color .2s;white-space:nowrap;
+}
+.dropdown-grid a:hover{background:#e63946;color:#fff;}
+@media(max-width:900px){
+  .dropdown-menu{position:static;transform:none;box-shadow:none;border:none;background:transparent;padding:5px 0 5px 15px;min-width:auto;}
+  .nav-dropdown:hover .dropdown-menu{display:block;}
+  .dropdown-grid{grid-template-columns:1fr;}
+  .dropdown-grid a{color:#fff;padding:6px 10px;font-size:.85rem;}
+  .dropdown-grid a:hover{background:rgba(255,255,255,.15);}
+}
+</style>
 </head>
 
 
@@ -48,7 +73,26 @@
         <li><a href="/">Home</a></li>
         <li><a href="/services/">Services</a></li>
         <li><a href="/about.html">About</a></li>
-        <li><a href="/areas/grimsby/" style="color:var(--red);">Areas</a></li>
+        <li class="nav-dropdown">
+              <a href="/areas.html">Areas &#9662;</a>
+              <div class="dropdown-menu">
+                <div class="dropdown-grid">
+                  <a href="/areas/grimsby/">Grimsby</a>
+                  <a href="/areas/hamilton/">Hamilton</a>
+                  <a href="/areas/burlington/">Burlington</a>
+                  <a href="/areas/brantford/">Brantford</a>
+                  <a href="/areas/st-catharines/">St. Catharines</a>
+                  <a href="/areas/niagara/">Niagara Region</a>
+                  <a href="/areas/niagara-falls/">Niagara Falls</a>
+                  <a href="/areas/ancaster/">Ancaster</a>
+                  <a href="/areas/stoney-creek/">Stoney Creek</a>
+                  <a href="/areas/beamsville/">Beamsville</a>
+                  <a href="/areas/caledonia/">Caledonia</a>
+                  <a href="/areas/paris/">Paris</a>
+                  <a href="/areas/binbrook/">Binbrook</a>
+                </div>
+              </div>
+            </li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/contact.html">Contact</a></li>
     </ul>
