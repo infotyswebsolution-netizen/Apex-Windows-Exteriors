@@ -10,10 +10,12 @@ function saveQuote() {
   const name = document.getElementById('client-name').value;
   const contact = document.getElementById('client-contact').value;
   const service = document.getElementById('service-type').value;
+  const source = document.getElementById('lead-source').value;
   const value = document.getElementById('quote-value').value;
+  const followUp = document.getElementById('follow-up-date').value;
 
   if (!name || !contact || !service || !value) {
-    alert('Missing fields required for quote logging.');
+    alert('Name, Contact, Service, and Value are required.');
     return;
   }
 
@@ -23,18 +25,19 @@ function saveQuote() {
     name: name,
     contact: contact,
     service: service,
+    source: source,
     value: parseFloat(value),
-    status: 'Pending'
+    status: 'Pending',
+    followUp: followUp
   };
 
   quoteData.unshift(newQuote);
   localStorage.setItem('apex_quotes', JSON.stringify(quoteData));
 
   // Reset Form
-  document.getElementById('client-name').value = '';
-  document.getElementById('client-contact').value = '';
-  document.getElementById('service-type').value = '';
-  document.getElementById('quote-value').value = '';
+  ['client-name', 'client-contact', 'service-type', 'lead-source', 'quote-value', 'follow-up-date'].forEach(id => {
+      document.getElementById(id).value = id.includes('source') ? 'Other' : (id.includes('service') ? '' : '');
+  });
 
   renderQuotes();
   updateStats();
@@ -46,12 +49,10 @@ function updateStats() {
   
   totalEl.innerText = quoteData.length;
   
-  // Calculate Pipeline Value (Status: Pending)
   const pipeValue = quoteData
     .filter(q => q.status === 'Pending')
     .reduce((sum, q) => sum + q.value, 0);
   
-  // Calculate Win Rate (Won / (Won + Lost))
   const wonCount = quoteData.filter(q => q.status === 'Won').length;
   const lostCount = quoteData.filter(q => q.status === 'Lost').length;
   const totalClosed = wonCount + lostCount;
@@ -89,8 +90,8 @@ function exportToCSV() {
         alert('No data to export');
         return;
     }
-    const headers = ['Date', 'Client', 'Contact', 'Service', 'Value', 'Status'];
-    const rows = quoteData.map(q => [q.date, q.name, q.contact, q.service, q.value, q.status]);
+    const headers = ['Date', 'Source', 'Client', 'Contact', 'Service', 'Value', 'Status', 'FollowUp'];
+    const rows = quoteData.map(q => [q.date, q.source || 'Other', q.name, q.contact, q.service, q.value, q.status, q.followUp || 'None']);
     
     let csvContent = "data:text/csv;charset=utf-8," 
         + headers.join(",") + "\n"
@@ -118,12 +119,29 @@ function renderQuotes() {
   }
 
   emptyState.style.display = 'none';
-  container.innerHTML = quoteData.map(q => `
+
+  const today = new Date().toISOString().split('T')[0];
+
+  container.innerHTML = quoteData.map(q => {
+    let followUpBadge = '';
+    if (q.followUp && q.status === 'Pending') {
+        if (q.followUp === today) followUpBadge = '<div style="color:#854d0e; font-weight:700; font-size:0.7rem;">⚠️ DUE TODAY</div>';
+        else if (q.followUp < today) followUpBadge = '<div style="color:#ef4444; font-weight:700; font-size:0.7rem;">🚨 OVERDUE</div>';
+    }
+
+    return `
     <tr>
-      <td style="font-size:0.8rem; color:#64748b;">${q.date}</td>
+      <td style="font-size:0.8rem; color:#64748b;">
+        ${q.date}<br>
+        <span style="color:var(--primary); font-weight:600; font-size:0.65rem;">${q.source || 'Direct'}</span>
+      </td>
       <td><strong>${q.name}</strong><div style="font-size:0.75rem; color:#94a3b8;">${q.contact}</div></td>
       <td style="font-size:0.9rem;">${q.service}</td>
       <td style="font-weight:600;">$${q.value.toLocaleString()}</td>
+      <td>
+        <span style="font-size:0.8rem; color:#475569;">${q.followUp || '--'}</span>
+        ${followUpBadge}
+      </td>
       <td><span class="tag tag-${q.status.toLowerCase()}">${q.status.toUpperCase()}</span></td>
       <td>
         <div style="display:flex; gap:5px;">
@@ -135,5 +153,6 @@ function renderQuotes() {
         </div>
       </td>
     </tr>
-  `).join('');
+    `;
+  }).join('');
 }
