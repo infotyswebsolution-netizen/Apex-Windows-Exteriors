@@ -3,6 +3,16 @@
     "trailingSlash": true,
     "redirects": [
         {
+            "source": "/dashboard/(.*)",
+            "destination": "/",
+            "permanent": false
+        },
+        {
+            "source": "/dashboard",
+            "destination": "/",
+            "permanent": false
+        },
+        {
             "source": "/about.html",
             "destination": "/about/",
             "permanent": true

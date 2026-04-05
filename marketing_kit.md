@@ -1,8 +1,5 @@
 This document contains everything you need to launch and promote your business online.
 
-### 🚀 [ACCESS INTERNAL CONTROL CENTER](/dashboard/)
-*(Internal use only - Manage quotes, ads, and sales scripts)*
-
 ## 📍 Google Business Profile (SEO Setup)
 
 **Business Name:** Apex Windows & Exteriors
