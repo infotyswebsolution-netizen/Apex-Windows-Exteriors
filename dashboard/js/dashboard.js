@@ -28,7 +28,8 @@ function saveQuote() {
     source: source,
     value: parseFloat(value),
     status: 'Pending',
-    followUp: followUp
+    followUp: followUp,
+    archived: false
   };
 
   quoteData.unshift(newQuote);
@@ -39,22 +40,23 @@ function saveQuote() {
       document.getElementById(id).value = id.includes('source') ? 'Other' : (id.includes('service') ? '' : '');
   });
 
-  renderQuotes();
-  updateStats();
+  applyFilters();
 }
 
 function updateStats() {
   const totalEl = document.getElementById('total-quotes-stat');
   if (!totalEl) return;
   
-  totalEl.innerText = quoteData.length;
+  // Stats ONLY reflect ACTIVE (non-archived) quotes
+  const activeQuotes = quoteData.filter(q => !q.archived);
+  totalEl.innerText = activeQuotes.length;
   
-  const pipeValue = quoteData
+  const pipeValue = activeQuotes
     .filter(q => q.status === 'Pending')
     .reduce((sum, q) => sum + q.value, 0);
   
-  const wonCount = quoteData.filter(q => q.status === 'Won').length;
-  const lostCount = quoteData.filter(q => q.status === 'Lost').length;
+  const wonCount = activeQuotes.filter(q => q.status === 'Won').length;
+  const lostCount = activeQuotes.filter(q => q.status === 'Lost').length;
   const totalClosed = wonCount + lostCount;
   const winRate = totalClosed > 0 ? ((wonCount / totalClosed) * 100).toFixed(0) : 0;
 
@@ -72,17 +74,8 @@ function updateStatus(id, newStatus) {
   if (idx !== -1) {
     quoteData[idx].status = newStatus;
     localStorage.setItem('apex_quotes', JSON.stringify(quoteData));
-    renderQuotes();
-    updateStats();
+    applyFilters();
   }
-}
-
-function deleteQuote(id) {
-  if (!confirm('Are you sure you want to delete this record?')) return;
-  quoteData = quoteData.filter(q => q.id !== id);
-  localStorage.setItem('apex_quotes', JSON.stringify(quoteData));
-  renderQuotes();
-  updateStats();
 }
 
 function exportToCSV() {
@@ -105,15 +98,29 @@ function exportToCSV() {
     link.click();
     document.body.removeChild(link);
 }
+function toggleArchive(id) {
+  const idx = quoteData.findIndex(q => q.id === id);
+  if (idx !== -1) {
+    quoteData[idx].archived = !quoteData[idx].archived;
+    localStorage.setItem('apex_quotes', JSON.stringify(quoteData));
+    applyFilters();
+  }
+}
 
 function applyFilters() {
   const searchTerm = document.getElementById('search-input').value.toLowerCase();
   const serviceFilter = document.getElementById('filter-service').value;
   const statusFilter = document.getElementById('filter-status').value;
   const urgencyFilter = document.getElementById('filter-urgency').value;
+  const archiveFilter = document.getElementById('filter-archived').value;
   const today = new Date().toISOString().split('T')[0];
 
   const filtered = quoteData.filter(q => {
+    // Backward compatibility: default archive to false
+    const isArchived = q.archived === true;
+    if (archiveFilter === 'active' && isArchived) return false;
+    if (archiveFilter === 'archived' && !isArchived) return false;
+
     const matchesSearch = q.name.toLowerCase().includes(searchTerm) || q.contact.toLowerCase().includes(searchTerm);
     const matchesService = serviceFilter === 'all' || q.service === serviceFilter;
     const matchesStatus = statusFilter === 'all' || q.status === statusFilter;
@@ -130,36 +137,35 @@ function applyFilters() {
   }
 
   renderQuotes(filtered);
+  updateStats();
 }
 
 function renderQuotes(dataToRender = null) {
   const container = document.getElementById('quote-table-body');
   const emptyState = document.getElementById('empty-state');
-  
   if (!container) return;
   
-  const activeData = dataToRender || quoteData;
+  const activeData = dataToRender || quoteData.filter(q => !q.archived);
   
   if (activeData.length === 0) {
     container.innerHTML = '';
     emptyState.style.display = 'block';
-    emptyState.innerText = dataToRender ? 'No results match your filters.' : 'No quotes logged yet.';
+    emptyState.innerText = dataToRender ? 'No matching results.' : 'No active quotes.';
     return;
   }
 
   emptyState.style.display = 'none';
-
   const today = new Date().toISOString().split('T')[0];
 
   container.innerHTML = activeData.map(q => {
     let followUpBadge = '';
-    if (q.followUp && q.status === 'Pending') {
+    if (q.followUp && q.status === 'Pending' && !q.archived) {
         if (q.followUp === today) followUpBadge = '<div style="color:#d97706; font-weight:700; font-size:0.7rem;">⚠️ DUE TODAY</div>';
         else if (q.followUp < today) followUpBadge = '<div style="color:#ef4444; font-weight:700; font-size:0.7rem;">🚨 OVERDUE</div>';
     }
 
     return `
-    <tr>
+    <tr style="${q.archived ? 'opacity:0.6; background:#f8fafc;' : ''}">
       <td style="font-size:0.8rem; color:#64748b;">
         ${q.date}<br>
         <span style="color:var(--primary); font-weight:600; font-size:0.65rem;">${q.source || 'Direct'}</span>
@@ -174,11 +180,14 @@ function renderQuotes(dataToRender = null) {
       <td><span class="tag tag-${q.status.toLowerCase()}">${q.status.toUpperCase()}</span></td>
       <td>
         <div style="display:flex; gap:5px;">
-           ${q.status === 'Pending' ? `
+           ${q.status === 'Pending' && !q.archived ? `
             <button onclick="updateStatus(${q.id}, 'Won')" style="background:#dcfce7; color:#166534; border:none; padding:5px; border-radius:4px; font-size:0.65rem; cursor:pointer; font-weight:700;">WON</button>
             <button onclick="updateStatus(${q.id}, 'Lost')" style="background:#fee2e2; color:#ef4444; border:none; padding:5px; border-radius:4px; font-size:0.65rem; cursor:pointer; font-weight:700;">LOST</button>
-          ` : `<button onclick="updateStatus(${q.id}, 'Pending')" style="background:#f1f5f9; color:#64748b; border:none; padding:5px; border-radius:4px; font-size:0.65rem; cursor:pointer;">REOPEN</button>`}
-          <button onclick="deleteQuote(${q.id})" style="background:transparent; border:none; color:#94a3b8; font-size:0.65rem; cursor:pointer; margin-left:10px;">X</button>
+          ` : (q.archived ? '' : `<button onclick="updateStatus(${q.id}, 'Pending')" style="background:#f1f5f9; color:#64748b; border:none; padding:5px; border-radius:4px; font-size:0.65rem; cursor:pointer;">REOPEN</button>`)}
+          
+          <button onclick="toggleArchive(${q.id})" style="background:${q.archived ? '#e2e8f0' : 'transparent'}; border:none; color:${q.archived ? '#475569' : '#94a3b8'}; font-size:0.65rem; cursor:pointer; margin-left:10px; padding:4px 8px; border-radius:4px; font-weight:600;">
+            ${q.archived ? 'RESTORE' : 'ARCHIVE'}
+          </button>
         </div>
       </td>
     </tr>

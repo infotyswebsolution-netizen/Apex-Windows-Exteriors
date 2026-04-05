@@ -239,6 +239,11 @@ Serving Grimsby, Hamilton, Burlington, Brantford & all of Niagara Region
                 <option value="overdue">Overdue</option>
               </select>
 
+              <select id="filter-archived" onchange="applyFilters()" style="padding:10px; border:1px solid #e2e8f0; border-radius:6px; font-size:0.85rem;">
+                <option value="active">Hide Archived</option>
+                <option value="archived">Show Archived</option>
+              </select>
+
               <div id="result-count" style="font-size:0.8rem; color:var(--text-light); text-align:right;">Showing all quotes</div>
             </div>
             <div class="log-form" style="margin-top: 30px; background:#f8fafc; padding:25px; border-radius:12px; border:1px solid #eef2f6;">
