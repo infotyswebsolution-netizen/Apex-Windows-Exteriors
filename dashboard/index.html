@@ -213,6 +213,34 @@ Serving Grimsby, Hamilton, Burlington, Brantford & all of Niagara Region
               <h2>Quote Tracker (System of Record)</h2>
               <button class="btn-action" style="background:#1b2e4b;" onclick="exportToCSV()">EXPORT CSV</button>
             </div>
+
+            <!-- SEARCH & FILTER BAR -->
+            <div style="background:white; padding:20px; border-radius:12px; margin-bottom:20px; border:1px solid #eef2f6; display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:15px; align-items:center;">
+              <input type="text" id="search-input" placeholder="Search Client..." style="padding:10px; border:1px solid #e2e8f0; border-radius:6px;" oninput="applyFilters()">
+              
+              <select id="filter-service" onchange="applyFilters()" style="padding:10px; border:1px solid #e2e8f0; border-radius:6px; font-size:0.85rem;">
+                <option value="all">Check Service</option>
+                <option value="Windows">Windows</option>
+                <option value="Doors">Doors</option>
+                <option value="Eavestroughs">Eavestroughs</option>
+                <option value="Siding">Siding</option>
+              </select>
+
+              <select id="filter-status" onchange="applyFilters()" style="padding:10px; border:1px solid #e2e8f0; border-radius:6px; font-size:0.85rem;">
+                <option value="all">Status: All</option>
+                <option value="Pending">Pending Only</option>
+                <option value="Won">Won Deals</option>
+                <option value="Lost">Lost Deals</option>
+              </select>
+
+              <select id="filter-urgency" onchange="applyFilters()" style="padding:10px; border:1px solid #e2e8f0; border-radius:6px; font-size:0.85rem;">
+                <option value="all">Follow-up: All</option>
+                <option value="today">Due Today</option>
+                <option value="overdue">Overdue</option>
+              </select>
+
+              <div id="result-count" style="font-size:0.8rem; color:var(--text-light); text-align:right;">Showing all quotes</div>
+            </div>
             <div class="log-form" style="margin-top: 30px; background:#f8fafc; padding:25px; border-radius:12px; border:1px solid #eef2f6;">
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
                   <input type="text" id="client-name" placeholder="Client Name">

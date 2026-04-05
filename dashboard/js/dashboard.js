@@ -106,15 +106,44 @@ function exportToCSV() {
     document.body.removeChild(link);
 }
 
-function renderQuotes() {
+function applyFilters() {
+  const searchTerm = document.getElementById('search-input').value.toLowerCase();
+  const serviceFilter = document.getElementById('filter-service').value;
+  const statusFilter = document.getElementById('filter-status').value;
+  const urgencyFilter = document.getElementById('filter-urgency').value;
+  const today = new Date().toISOString().split('T')[0];
+
+  const filtered = quoteData.filter(q => {
+    const matchesSearch = q.name.toLowerCase().includes(searchTerm) || q.contact.toLowerCase().includes(searchTerm);
+    const matchesService = serviceFilter === 'all' || q.service === serviceFilter;
+    const matchesStatus = statusFilter === 'all' || q.status === statusFilter;
+    const matchesUrgency = urgencyFilter === 'all' || (
+      urgencyFilter === 'today' ? q.followUp === today : (urgencyFilter === 'overdue' ? q.followUp < today : true)
+    );
+    
+    return matchesSearch && matchesService && matchesStatus && matchesUrgency;
+  });
+
+  const countDisplay = document.getElementById('result-count');
+  if (countDisplay) {
+    countDisplay.innerText = `Showing ${filtered.length} of ${quoteData.length} records`;
+  }
+
+  renderQuotes(filtered);
+}
+
+function renderQuotes(dataToRender = null) {
   const container = document.getElementById('quote-table-body');
   const emptyState = document.getElementById('empty-state');
   
   if (!container) return;
   
-  if (quoteData.length === 0) {
+  const activeData = dataToRender || quoteData;
+  
+  if (activeData.length === 0) {
     container.innerHTML = '';
     emptyState.style.display = 'block';
+    emptyState.innerText = dataToRender ? 'No results match your filters.' : 'No quotes logged yet.';
     return;
   }
 
@@ -122,10 +151,10 @@ function renderQuotes() {
 
   const today = new Date().toISOString().split('T')[0];
 
-  container.innerHTML = quoteData.map(q => {
+  container.innerHTML = activeData.map(q => {
     let followUpBadge = '';
     if (q.followUp && q.status === 'Pending') {
-        if (q.followUp === today) followUpBadge = '<div style="color:#854d0e; font-weight:700; font-size:0.7rem;">⚠️ DUE TODAY</div>';
+        if (q.followUp === today) followUpBadge = '<div style="color:#d97706; font-weight:700; font-size:0.7rem;">⚠️ DUE TODAY</div>';
         else if (q.followUp < today) followUpBadge = '<div style="color:#ef4444; font-weight:700; font-size:0.7rem;">🚨 OVERDUE</div>';
     }
 
