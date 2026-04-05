@@ -40,22 +40,48 @@ function saveQuote() {
   updateStats();
 }
 
+function updateStats() {
+  const totalEl = document.getElementById('total-quotes-stat');
+  if (!totalEl) return;
+  
+  totalEl.innerText = quoteData.length;
+  
+  // Calculate Pipeline Value (Status: Pending)
+  const pipeValue = quoteData
+    .filter(q => q.status === 'Pending')
+    .reduce((sum, q) => sum + q.value, 0);
+  
+  // Calculate Win Rate (Won / (Won + Lost))
+  const wonCount = quoteData.filter(q => q.status === 'Won').length;
+  const lostCount = quoteData.filter(q => q.status === 'Lost').length;
+  const totalClosed = wonCount + lostCount;
+  const winRate = totalClosed > 0 ? ((wonCount / totalClosed) * 100).toFixed(0) : 0;
+
+  const statValues = document.querySelectorAll('.stat-val');
+  if (statValues[2]) statValues[2].innerText = winRate + '%';
+  
+  if (statValues[1]) {
+    statValues[1].innerText = '$' + pipeValue.toLocaleString();
+    statValues[1].parentElement.querySelector('.stat-label').innerText = 'Pipeline Value ($)';
+  }
+}
+
+function updateStatus(id, newStatus) {
+  const idx = quoteData.findIndex(q => q.id === id);
+  if (idx !== -1) {
+    quoteData[idx].status = newStatus;
+    localStorage.setItem('apex_quotes', JSON.stringify(quoteData));
+    renderQuotes();
+    updateStats();
+  }
+}
+
 function deleteQuote(id) {
   if (!confirm('Are you sure you want to delete this record?')) return;
   quoteData = quoteData.filter(q => q.id !== id);
   localStorage.setItem('apex_quotes', JSON.stringify(quoteData));
   renderQuotes();
   updateStats();
-}
-
-function updateStats() {
-  const totalEl = document.getElementById('total-quotes-stat');
-  const count = quoteData.length;
-  if (totalEl) totalEl.innerText = count;
-  
-  // Update win rate placeholder (mock logic for MVP)
-  const winRateEl = document.querySelectorAll('.stat-val')[2];
-  if(winRateEl && count > 0) winRateEl.innerText = '32%'; 
 }
 
 function exportToCSV() {
@@ -98,9 +124,15 @@ function renderQuotes() {
       <td><strong>${q.name}</strong><div style="font-size:0.75rem; color:#94a3b8;">${q.contact}</div></td>
       <td style="font-size:0.9rem;">${q.service}</td>
       <td style="font-weight:600;">$${q.value.toLocaleString()}</td>
-      <td><span class="tag tag-pending">${q.status}</span></td>
+      <td><span class="tag tag-${q.status.toLowerCase()}">${q.status.toUpperCase()}</span></td>
       <td>
-        <button onclick="deleteQuote(${q.id})" style="background:white; border:1px solid #fee2e2; color:#ef4444; padding:5px 8px; border-radius:4px; font-size:0.7rem; cursor:pointer;">REMOVE</button>
+        <div style="display:flex; gap:5px;">
+           ${q.status === 'Pending' ? `
+            <button onclick="updateStatus(${q.id}, 'Won')" style="background:#dcfce7; color:#166534; border:none; padding:5px; border-radius:4px; font-size:0.65rem; cursor:pointer; font-weight:700;">WON</button>
+            <button onclick="updateStatus(${q.id}, 'Lost')" style="background:#fee2e2; color:#ef4444; border:none; padding:5px; border-radius:4px; font-size:0.65rem; cursor:pointer; font-weight:700;">LOST</button>
+          ` : `<button onclick="updateStatus(${q.id}, 'Pending')" style="background:#f1f5f9; color:#64748b; border:none; padding:5px; border-radius:4px; font-size:0.65rem; cursor:pointer;">REOPEN</button>`}
+          <button onclick="deleteQuote(${q.id})" style="background:transparent; border:none; color:#94a3b8; font-size:0.65rem; cursor:pointer; margin-left:10px;">X</button>
+        </div>
       </td>
     </tr>
   `).join('');
